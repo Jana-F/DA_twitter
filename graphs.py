@@ -3,10 +3,18 @@ from plotly.graph_objs import Scatter, Layout, Figure
 
 
 def render_graph(followers_data):
+    dates = []
+    for record in followers_data:
+        dates.append(record[0])
+
+    followers_per_day = []
+    for record in followers_data:
+        followers_per_day.append(record[1])
+
     # prvni graf, tecky
     trace1 = Scatter(
-        x=[1, 2, 3, 4],
-        y=[1, 2, 0, 2],
+        x=dates,
+        y=[1, 2, 0, 2, 3, 0],
         mode='markers',
         marker={
             'size': 25,
@@ -19,10 +27,10 @@ def render_graph(followers_data):
         yaxis='y2'
     )
 
-    # prvni graf, tecky
+    # druhý graf, čtverečky
     trace2 = Scatter(
-        x=[1, 2, 3, 4],
-        y=[4, 3, 1, 2],
+        x=dates,
+        y=[4, 3, 1, 2, 1, 2],
         mode='markers',
         marker={
             'symbol': 'square',
@@ -38,8 +46,8 @@ def render_graph(followers_data):
 
     # treti graf, souvisla cara
     trace3 = Scatter(
-        x=[1, 2, 3, 4],
-        y=[40, 50, 60, 54],
+        x=dates,
+        y=followers_per_day,
         mode='lines',
         name='followers',
     )
@@ -49,18 +57,31 @@ def render_graph(followers_data):
     layout = Layout(
         title='Double Y Axis Example',
         xaxis=dict(
+            title='dates',
             zeroline=True,
             showline=True,
+            titlefont=dict(
+                color='rgb(148, 103, 189)'
+            ),
+            tickfont=dict(
+                color='rgb(148, 103, 189)'
+            )
          ),
         yaxis=dict(
             title='followers',
-            range=[0, 80],
+            range=[0, 400],
             zeroline=True,
-            showline = True
+            showline = True,
+            titlefont=dict(
+                color='rgb(148, 103, 189)'
+            ),
+            tickfont = dict(
+                color='rgb(148, 103, 189)'
+            )
         ),
         yaxis2=dict(
             title='tweets, likes',
-            range=[0, 4],
+            range=[0, 5],
             zeroline=True,
             showline=True,
             titlefont=dict(
