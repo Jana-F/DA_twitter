@@ -6,7 +6,7 @@ def render_graph(followers_data):
 
     # prvni graf, tecky
     trace1 = Scatter(
-        x=followers_data[0],
+        x=followers_data['info_date_when'],
         y=[1, 2, 0, 2, 3, 0],
         mode='markers',
         marker={
@@ -22,7 +22,7 @@ def render_graph(followers_data):
 
     # druhý graf, čtverečky
     trace2 = Scatter(
-        x=followers_data[0],
+        x=followers_data['info_date_when'],
         y=[4, 3, 1, 2, 1, 2],
         mode='markers',
         marker={
@@ -39,8 +39,8 @@ def render_graph(followers_data):
 
     # treti graf, souvisla cara
     trace3 = Scatter(
-        x=followers_data[0],
-        y=followers_data[1],
+        x=followers_data['info_date_when'],
+        y=followers_data['info_per_day'],
         mode='lines',
         name='followers',
     )
